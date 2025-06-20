@@ -874,7 +874,7 @@ class MemberController extends Controller
         // Fetch trading accounts based on user ID with eager loading
         $tradingAccounts = TradingAccount::with([
             'trading_user:id,meta_login,last_access',
-            'accountType:id,slug,color'  // Load account type info
+            'accountType:id,slug,account_group,color'  // Load account type info
         ])
         ->where('user_id', $request->id)
         ->get()  // Fetch the results from the database
@@ -899,6 +899,7 @@ class MemberController extends Controller
                 'id' => $trading_account->id,
                 'meta_login' => $trading_account->meta_login,
                 'account_type' => $trading_account->accountType->slug,
+                'account_group' => $trading_account->accountType->account_group,
                 'color' => $trading_account->accountType->color,
                 'balance' => $trading_account->balance,
                 'credit' => $trading_account->credit,

@@ -113,7 +113,7 @@ const requireConfirmation = (action_type, meta_login) => {
                             backgroundColor: `#${tradingAccount.color}`,
                         }"
                     >
-                        {{ $t('public.' + tradingAccount.account_type) }}
+                        {{ tradingAccount.account_group }}
                     </div>
                     <IconAlertCircleFilled :size="20" stroke-width="1.25" class="text-error-500" v-if="!tradingAccount.is_active" v-tooltip.top="$t('public.trading_account_inactive_warning')" />
                 </div>
