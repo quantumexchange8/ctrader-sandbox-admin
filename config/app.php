@@ -54,7 +54,7 @@ return [
 
     'url' => env('APP_URL', 'http://localhost'),
 
-    'member_production_url' => env('MEMBER_PRODUCTION_URL', 'https://qcg-user.currenttech.pro'),
+    'member_production_url' => env('MEMBER_PRODUCTION_URL', 'https://ctrader-sandbox-user.currenttech.pro'),
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
