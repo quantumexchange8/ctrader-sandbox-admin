@@ -44,12 +44,12 @@ class UpdateCTraderAccountJob implements ShouldQueue
                         $account->save();
                     }
 
-                    $tradingAccount = $account->trading_account;
-                    if ($tradingAccount) {
-                        $tradingAccount->delete();
-                    }
+                    // $tradingAccount = $account->trading_account;
+                    // if ($tradingAccount) {
+                    //     $tradingAccount->delete();
+                    // }
                     
-                    $account->delete();
+                    // $account->delete();
 
                 } else {
                     // Proceed with updating account information

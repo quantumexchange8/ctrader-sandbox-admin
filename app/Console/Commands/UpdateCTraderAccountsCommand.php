@@ -42,12 +42,12 @@ class UpdateCTraderAccountsCommand extends Command
                         // $this->warn("Account {$account->meta_login} marked as inactive.");
                     }
 
-                    $tradingAccount = $account->trading_account;
-                    if ($tradingAccount) {
-                        $tradingAccount->delete();
-                    }
+                    // $tradingAccount = $account->trading_account;
+                    // if ($tradingAccount) {
+                    //     $tradingAccount->delete();
+                    // }
                     
-                    $account->delete();
+                    // $account->delete();
 
                 } else {
                     // Proceed with updating account information

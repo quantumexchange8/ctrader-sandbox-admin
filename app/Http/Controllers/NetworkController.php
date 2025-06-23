@@ -16,7 +16,7 @@ class NetworkController extends Controller
     public function getDownlineData(Request $request)
     {
         $upline_id = $request->upline_id;
-        $parent_id = $request->parent_id ?: 2707;
+        $parent_id = $request->parent_id ?: 3;
 
         if ($request->filled('search')) {
             $search = '%' . $request->input('search') . '%';

@@ -22,7 +22,7 @@ class RebateController extends Controller
 
     public function getCompanyProfileData(Request $request)
     {
-        $userId = 2707;
+        $userId = 3;
 
         $company_profile = RebateAllocation::with([
             'user' => function ($query) {
@@ -126,7 +126,7 @@ class RebateController extends Controller
 
         // If there is no search term, filter by upline_id
         if (empty($search)) {
-            $query->where('upline_id', 2707);  // Only apply upline_id filter if no search term
+            $query->where('upline_id', 3);  // Only apply upline_id filter if no search term
         } else {
             // If there is a search term, search by first_name or email
             $query->where(function ($query) use ($search) {
@@ -235,7 +235,7 @@ class RebateController extends Controller
             return 0;
         }
 
-        $split = explode('-2707-', $hierarchyList);
+        $split = explode('-3-', $hierarchyList);
         return substr_count($split[1], '-') + 1;
     }
 
@@ -303,8 +303,8 @@ class RebateController extends Controller
         $selected_agent = User::where('id', $selected_agent_id)->first();
 
         // determine is the selected agent other than level 1
-        if ($selected_agent->upline_id !== 2707) {
-            $split_hierarchy = explode('-2707-', $selected_agent->hierarchyList);
+        if ($selected_agent->upline_id !== 3) {
+            $split_hierarchy = explode('-3-', $selected_agent->hierarchyList);
             $upline_ids = explode('-', $split_hierarchy[1]);
 
             array_pop($upline_ids);
