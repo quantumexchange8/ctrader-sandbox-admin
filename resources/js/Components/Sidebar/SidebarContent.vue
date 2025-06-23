@@ -81,7 +81,10 @@ watchEffect(() => {
             :pendingCounts="pendingWithdrawals + pendingBonus + pendingIncentive + pendingRewards + pendingKyc"
             v-if="hasRole('super-admin') || hasPermission([
                 'access_withdrawal_request',
+                'access_bonus_request',
                 'access_incentive_request',
+                'access_rewards_request',
+                'access_kyc_request',
             ])"
         >
             <template #icon>
@@ -136,6 +139,7 @@ watchEffect(() => {
             v-if="hasRole('super-admin') || hasPermission([
                 'access_member_listing',
                 'access_member_network',
+                'access_kyc_listing',
                 'access_account_listing',
             ])"
         >
@@ -246,8 +250,11 @@ watchEffect(() => {
                 'access_deposit',
                 'access_withdrawal',
                 'access_transfer',
+                'access_bonus',
+                'access_rewards',
                 'access_rebate_payout',
                 'access_incentive_payout',
+                'access_adjustment',
             ])"
         >
             <template #icon>
@@ -307,6 +314,7 @@ watchEffect(() => {
                 :title="$t('public.sidebar_adjustment')"
                 :href="route('transaction.adjustment')"
                 :active="route().current('transaction.adjustment')"
+                v-if="hasRole('super-admin') || hasPermission('access_adjustment')"
             />
 
         </SidebarCollapsible>
@@ -372,7 +380,7 @@ watchEffect(() => {
                 :title="$t('public.sidebar_trade_point_setting')"
                 :href="route('configuration.trade_point_setting')"
                 :active="route().current('transaction.trade_point_setting')"
-                v-if="hasRole('super-admin') || hasPermission('access_wtrade_point_setting')"
+                v-if="hasRole('super-admin') || hasPermission('access_trade_point_setting')"
             />
         </SidebarCollapsible>
         <!-- Components -->
