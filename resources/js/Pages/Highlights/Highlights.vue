@@ -2,27 +2,41 @@
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import Announcement from "@/Pages/Highlights/Announcement/Announcement.vue";
 import Forum from "@/Pages/Highlights/Forum/Forum.vue";
-import { h, ref, watch, onMounted } from "vue";
+import { h, ref, watch, computed, onMounted } from "vue";
 import Tabs from 'primevue/tabs';
 import TabList from 'primevue/tablist';
 import Tab from 'primevue/tab';
 import TabPanels from 'primevue/tabpanels';
 import TabPanel from 'primevue/tabpanel';
 import { usePage } from '@inertiajs/vue3';
+import { usePermission } from "@/Composables/index.js";
+
+const { hasRole, hasPermission } = usePermission();
 
 // Tab data
-const tabs = ref([
+const allTabs = [
     {
         title: 'announcements',
         component: h(Announcement),
-        type: 'announcement'
+        type: 'announcement',
+        permission: 'access_highlights_announcement',
     },
     {
         title: 'member_forum',
         component: h(Forum),
-        type: 'forum'
+        type: 'forum',
+        permission: 'access_member_forum',
+    },
+];
+
+// computed tabs that are allowed
+const tabs = computed(() => {
+    if (hasRole('super-admin')) {
+        return allTabs;
     }
-]);
+
+    return allTabs.filter(tab => hasPermission(tab.permission));
+});
 
 // Initial selected type
 const type = ref('announcement');

@@ -64,7 +64,7 @@ class RoleAndPermissionMiddleware
             'access_account_listing'    => 'member.account_listing',
             'access_sales_team'         => 'team',
             'access_highlights_announcement'       => 'highlights',
-            'access_member_forum'       => 'member.forum',
+            'access_member_forum'       => 'highlights',
             'access_reward_setting'     => 'reward_setting',
             'access_rebate_setting'     => 'rebate_setting',
             'access_leaderboard'        => 'leaderboard',
